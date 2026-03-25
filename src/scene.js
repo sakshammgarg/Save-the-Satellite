@@ -55,6 +55,9 @@ export function initScene() {
     renderer.setPixelRatio(window.devicePixelRatio);
     
     // EXPLICITLY set canvas resolution to match display size
+    canvas.addEventListener('click', () => canvas.focus());
+    canvas.focus(); // grab focus on load
+    
     canvas.width = width;
     canvas.height = height;
     console.log(`📍 Canvas size AFTER: ${canvas.clientWidth}x${canvas.clientHeight}px (display) | ${canvas.width}x${canvas.height}px (actual)`);
@@ -494,4 +497,8 @@ export function getOrbitAngle() {
 
 export function getMoonPosition() {
     return moonMesh ? moonMesh.position.clone() : null;
+}
+
+export function resetSatelliteOffset() {
+    satelliteOffset.set(0, 0, 0);
 }
