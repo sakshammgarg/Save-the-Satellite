@@ -68,6 +68,7 @@ import { initDebris, updateDebris, getDebrisCount, clearAllDebris } from './debr
 import { initParticles, createExplosion, createSpark, updateParticles } from './particles.js';
 import { initAudio, playAlarm, playSuccess, playCollision, playWarning } from './sound.js';
 import { initScoreboard, addScore, getScoreboardHTML } from './scoreboard.js';
+import { initScene, getScene, getCamera, getRenderer, animateScene, getSatellitePosition, resetSatelliteOffset } from './scene.js';
 
 // ==================== INITIALIZATION ====================
 function init() {
@@ -252,6 +253,7 @@ function restartGame() {
 
     // Clear visual effects
     clearAllDebris();
+    resetSatelliteOffset();
 
     // Hide game over modal
     const modal = document.getElementById('gameOverModal');
@@ -281,6 +283,7 @@ document.addEventListener('DOMContentLoaded', init);
 // Toggle debug panel with L key
 window.addEventListener('keydown', (event) => {
     if (event.key.toLowerCase() === 'l') {
+        event.preventDefault();
         const debugPanel = document.getElementById('debugPanel');
         if (debugPanel) {
             debugPanel.style.display = debugPanel.style.display === 'none' ? 'block' : 'none';
