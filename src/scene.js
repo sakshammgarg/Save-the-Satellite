@@ -94,6 +94,9 @@ export function initScene() {
         orbitControls.minDistance = 3;    // can't zoom inside Earth
         orbitControls.maxDistance = 22;   // can't zoom to infinity
         orbitControls.update();
+
+        orbitControls.enableKeys = false; // stops OrbitControls eating arrow keys
+        
         console.log('✅ OrbitControls enabled - drag to rotate, scroll to zoom');
     } else {
         console.warn('⚠️ OrbitControls not available');
@@ -392,6 +395,12 @@ export function checkEclipse() {
 function setupManeuverControls() {
     window.addEventListener('keydown', (event) => {
         const key = event.key.toLowerCase();
+        // prevents browser scroll on WASD/arrows
+        const controlledKeys = ['w', 's', 'a', 'd', 'q', 'e', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright'];
+        
+        if (controlledKeys.includes(key)) {
+            event.preventDefault();
+        }
         if (key === 'w' || key === 'arrowup') {
             satelliteOffset.z -= SATELLITE_MANEUVER_SPEED;
         }
