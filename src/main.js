@@ -60,7 +60,7 @@ console.log('THREE.js version:', typeof THREE !== 'undefined' ? 'LOADED' : 'NOT 
 console.log('Initial game state:', gameState);
 
 // ==================== IMPORTS ====================
-import { initScene, getScene, getCamera, getRenderer, animateScene, getSatellitePosition } from './scene.js';
+import { initScene, getScene, getCamera, getRenderer, animateScene, getSatellitePosition, resetSatelliteOffset } from './scene.js';
 import { updateUI, setupUIListeners } from './ui.js';
 import { updateBattery, checkEclipse, calculateDrain } from './systems.js';
 import { updateFaults, generateRandomFault } from './faults.js';
@@ -68,7 +68,6 @@ import { initDebris, updateDebris, getDebrisCount, clearAllDebris } from './debr
 import { initParticles, createExplosion, createSpark, updateParticles } from './particles.js';
 import { initAudio, playAlarm, playSuccess, playCollision, playWarning } from './sound.js';
 import { initScoreboard, addScore, getScoreboardHTML } from './scoreboard.js';
-import { initScene, getScene, getCamera, getRenderer, animateScene, getSatellitePosition, resetSatelliteOffset } from './scene.js';
 
 // ==================== INITIALIZATION ====================
 function init() {
